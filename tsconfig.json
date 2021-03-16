@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonJS",
+    "outDir": "./static",
+    "rootDir": "./src",
+    "noImplicitAny": true
+  }
+}
