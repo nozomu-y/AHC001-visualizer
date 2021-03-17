@@ -126,7 +126,7 @@ class Drawer {
       let req: Requirement = new Requirement(+coord[0], +coord[1], +coord[2]);
       this.requirements.push(req);
     }
-    console.log("Input complete");
+    document.getElementById("init").classList.remove("disabled");
   }
 
   // getOutput() {
@@ -203,16 +203,20 @@ class Drawer {
       );
       this.diffs.push(ad);
     }
-    alert("file loaded");
+    document.getElementById("start").classList.remove("disabled");
   }
 
   async transition() {
+    let i: number = 0;
     for (let diff of this.diffs) {
-      await delay(0);
+      i++;
       this.ads[diff.index] = diff;
-      this.clear();
-      this.draw();
-      document.getElementById("score").innerText = diff.score.toString();
+      if (i % 100 == 0) {
+        await delay(0);
+        this.clear();
+        this.draw();
+        document.getElementById("score").innerText = diff.score.toString();
+      }
     }
   }
 
@@ -220,7 +224,7 @@ class Drawer {
     this.clear();
     this.getOutput();
     this.draw();
-    console.log("initialization complete");
+    document.getElementById("load_diff").classList.remove("disabled");
   }
 
   start() {
