@@ -101,6 +101,23 @@ class Drawer {
         (ad.c - ad.a) * this.scale,
         (ad.d - ad.b) * this.scale
       );
+      this.ctx.fillStyle = "rgb(0,255,0)";
+      this.ctx.fillRect(
+        this.requirements[i].x * this.scale - (50 * this.scale) / 2,
+        this.requirements[i].y * this.scale - (50 * this.scale) / 2,
+        50 * this.scale,
+        50 * this.scale
+      );
+      this.ctx.beginPath();
+      this.ctx.moveTo(
+        this.requirements[i].x * this.scale,
+        this.requirements[i].y * this.scale
+      );
+      this.ctx.lineTo(
+        ((ad.c + ad.a) / 2) * this.scale,
+        ((ad.d + ad.b) / 2) * this.scale
+      );
+      this.ctx.stroke();
       this.ctx.textAlign = "center";
       this.ctx.textBaseline = "middle";
       this.ctx.strokeText(
