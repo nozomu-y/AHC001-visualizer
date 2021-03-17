@@ -12,6 +12,30 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css"
+      integrity="sha512-Oy18vBnbSJkXTndr2n6lDMO5NN31UljR8e/ICzVPrGpSud4Gkckb8yUpqhKuUNoE+o9gAb4O/rAxxw1ojyUVzg=="
+      crossorigin="anonymous"
+    />
+    <style>
+      .visualizer {
+        width: 1000px;
+      }
+    </style>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script
+      type="text/javascript"
+      async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"
+    ></script>
 
     <title>AHC001 Visualizer</title>
   </head>
@@ -23,12 +47,13 @@
     </nav>
     <div class="container-fluid mt-3">
       <div class="row">
-        <div class="col-9">
+        <div class="visualizer">
           <div id="visualizer"></div>
           <p>Score: <span id="score"></span></p>
         </div>
-        <div class="col-3">
+        <div class="col">
           <div class="form-group mb-3">
+            <label for="input">Input of the problem</label>
             <textarea
               name="input"
               id="input"
@@ -38,7 +63,7 @@
               placeholder="Input"
             ></textarea>
           </div>
-          <button class="btn btn-primary mb-3" id="load">Load</button>
+          <button class="btn btn-primary mb-3" id="load">Load Input</button>
           <!-- <div class="form-group mb-3"> -->
           <!-- <textarea -->
           <!-- name="output" -->
@@ -49,12 +74,29 @@
           <!-- placeholder="Output" -->
           <!-- ></textarea> -->
           <!-- </div> -->
-          <button class="btn btn-primary mb-3" id="init">Init</button>
+          <button class="btn btn-primary mb-3 disabled" id="init">
+            Initialize
+          </button>
           <div class="form-group mb-3">
+            <label for="diff">Diff of the transition</label>
             <input type="file" name="diff" id="diff" class="form-control" />
           </div>
-          <button class="btn btn-primary" id="load_diff">Load diff</button>
-          <button class="btn btn-primary" id="start">Start</button>
+          <button class="btn btn-primary disabled" id="load_diff">
+            Load file
+          </button>
+          <button class="btn btn-primary disabled" id="start">
+            Start Transition
+          </button>
+        </div>
+        <div class="col-12">
+          <h2>Usage</h2>
+          <h3>Diff</h3>
+          <p>
+            For each transition, please enter the index, coordinates, and score.
+          </p>
+          <div class="markdown-body">
+            <pre><code>i a b c d score</code></pre>
+          </div>
         </div>
       </div>
     </div>
